@@ -11,13 +11,12 @@ table = []
 counter = 0
 
 for block in blockchain.get_unordered_blocks():
-    if(counter > 200000):
+    if(counter > 100000):
         break
     else:
         for tx in block.transactions:
             for no, output in enumerate(tx.outputs):
-                # print("date=%s tx=%s value=%s" % (block.header.timestamp, tx.hash, output.value))
-                value = (block.header.timestamp, tx.hash, output.value)
+                value = (block.header.timestamp, tx.hash, output.value, no, output.type,)
                 print (value)
                 table.append(value)
         counter+=1
